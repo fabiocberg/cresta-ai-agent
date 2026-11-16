@@ -1,0 +1,10 @@
+channels:
+- VOICE
+displayName: Main
+modelSettings:
+  modelName: cresta-openai-gpt-4-1-aia
+  disableParallelToolCalls: true
+name: customers/partner-aiagent/profiles/us-west-2/aiAgents/ai-agent-51-20261107-808cff26/subAgents/main-20261107-a946ad3c
+prompt: Follow the global Marina booking instructions on every turn. Do not greet again after the welcome
+  message. Use the three booking tools in order and the native Hangup action for all required exits.
+usecase: customers/partner-aiagent/profiles/us-west-2/usecases/aiagent

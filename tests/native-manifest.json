@@ -1,0 +1,350 @@
+{
+  "test_set": "AI Agent 51 Testing",
+  "departure_date": "2026-12-07",
+  "cases": [
+    {
+      "id": "happy-path-live",
+      "display_name": "AI Agent 51 | happy-path-live",
+      "mode": "live_api",
+      "rules": []
+    },
+    {
+      "id": "human-at-greeting",
+      "display_name": "AI Agent 51 | human-at-greeting",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "human-during-search",
+      "display_name": "AI Agent 51 | human-during-search",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "human-after-passenger",
+      "display_name": "AI Agent 51 | human-after-passenger",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "human-request-with-other-data",
+      "display_name": "AI Agent 51 | human-request-with-other-data",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "human-after-booking",
+      "display_name": "AI Agent 51 | human-after-booking",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "human-negation",
+      "display_name": "AI Agent 51 | human-negation",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "identity-direct",
+      "display_name": "AI Agent 51 | identity-direct",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "identity-adversarial",
+      "display_name": "AI Agent 51 | identity-adversarial",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "identity-mid-booking",
+      "display_name": "AI Agent 51 | identity-mid-booking",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "passenger-save-required",
+      "display_name": "AI Agent 51 | passenger-save-required",
+      "mode": "live_api",
+      "rules": []
+    },
+    {
+      "id": "incomplete-passenger",
+      "display_name": "AI Agent 51 | incomplete-passenger",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "out-of-order-and-invented-id",
+      "display_name": "AI Agent 51 | out-of-order-and-invented-id",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "unsupported-route",
+      "display_name": "AI Agent 51 | unsupported-route",
+      "mode": "strict_mock",
+      "rules": [
+        "search-empty",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "requested-flight-not-listed",
+      "display_name": "AI Agent 51 | requested-flight-not-listed",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "listed-flight-outside-shortlist",
+      "display_name": "AI Agent 51 | listed-flight-outside-shortlist",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "passenger-email-conflict",
+      "display_name": "AI Agent 51 | passenger-email-conflict",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-409",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "defer-at-booking",
+      "display_name": "AI Agent 51 | defer-at-booking",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "policy-interruption",
+      "display_name": "AI Agent 51 | policy-interruption",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "payment-and-refund",
+      "display_name": "AI Agent 51 | payment-and-refund",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "search-outage",
+      "display_name": "AI Agent 51 | search-outage",
+      "mode": "strict_mock",
+      "rules": [
+        "search-503",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "save-outage",
+      "display_name": "AI Agent 51 | save-outage",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-503",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "booking-timeout",
+      "display_name": "AI Agent 51 | booking-timeout",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-503"
+      ]
+    },
+    {
+      "id": "changed-itinerary",
+      "display_name": "AI Agent 51 | changed-itinerary",
+      "mode": "strict_mock",
+      "rules": [
+        "search-lax",
+        "search-sfo",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "no-duplicate-booking",
+      "display_name": "AI Agent 51 | no-duplicate-booking",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "group-count-preserved",
+      "display_name": "AI Agent 51 | group-count-preserved",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    },
+    {
+      "id": "prompt-and-secret-injection",
+      "display_name": "AI Agent 51 | prompt-and-secret-injection",
+      "mode": "strict_mock",
+      "rules": [
+        "search-ok",
+        "save-ok",
+        "book-ok"
+      ]
+    }
+  ],
+  "endpoints": {
+    "search": "/api/search_flight",
+    "save": "/api/save_passenger_information",
+    "book": "/api/book_flight"
+  },
+  "rules": [
+    {
+      "id": "search-ok",
+      "endpoint": "search",
+      "status": 200,
+      "body_file": "tests/fixtures/search-ok.json",
+      "body_match": {}
+    },
+    {
+      "id": "search-lax",
+      "endpoint": "search",
+      "status": 200,
+      "body_file": "tests/fixtures/search-lax.json",
+      "body_match": {
+        "destination": "LAX"
+      }
+    },
+    {
+      "id": "search-sfo",
+      "endpoint": "search",
+      "status": 200,
+      "body_file": "tests/fixtures/search-sfo.json",
+      "body_match": {
+        "destination": "SFO"
+      }
+    },
+    {
+      "id": "search-empty",
+      "endpoint": "search",
+      "status": 200,
+      "body_file": "tests/fixtures/search-empty.json",
+      "body_match": {}
+    },
+    {
+      "id": "search-503",
+      "endpoint": "search",
+      "status": 503,
+      "body_file": "tests/fixtures/search-503.json",
+      "body_match": {}
+    },
+    {
+      "id": "save-ok",
+      "endpoint": "save",
+      "status": 201,
+      "body_file": "tests/fixtures/save-ok.json",
+      "body_match": {}
+    },
+    {
+      "id": "save-409",
+      "endpoint": "save",
+      "status": 409,
+      "body_file": "tests/fixtures/save-409.json",
+      "body_match": {}
+    },
+    {
+      "id": "save-503",
+      "endpoint": "save",
+      "status": 503,
+      "body_file": "tests/fixtures/save-503.json",
+      "body_match": {}
+    },
+    {
+      "id": "book-ok",
+      "endpoint": "book",
+      "status": 201,
+      "body_file": "tests/fixtures/book-ok.json",
+      "body_match": {}
+    },
+    {
+      "id": "book-503",
+      "endpoint": "book",
+      "status": 503,
+      "body_file": "tests/fixtures/book-503.json",
+      "body_match": {}
+    }
+  ]
+}

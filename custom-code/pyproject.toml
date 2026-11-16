@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "custom-code"
+version = "0.1.0"
+description = "Custom code package custom-code"
+requires-python = ">=3.13"
+dependencies = [
+    # Cap both, and move them together. sdk and types ship as matched pairs:
+    # types 1.5.0 removed AIAgent.ai_agent_id / sub_agent_id in favour of
+    # control_/effective_ ids, and sdk 1.5.0 is the first release that reads
+    # them — neither half works against the other's generation. Capping the sdk
+    # is what makes an upgrade an event at all: left unbounded it is never
+    # proposed, and the version actually installed is decided by whatever
+    # constraint the types pin happens to imply.
+    "cresta-agent-sdk>=1.5.0,<1.6.0",
+    "cresta-agent-types>=1.6.0,<1.7.0",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["deps", "tests", "tests.*"]
+
+[project.optional-dependencies]
+test = [
+    "pytest==9.1.1",
+    "pytest-reraise==2.1.2",
+    "pytest-asyncio==1.4.0",
+]

@@ -1,0 +1,97 @@
+displayName: AI Agent 51 | live regression | human-negation
+description: Agent continues collecting search criteria. Does not invoke Hangup based
+  only on the word human.
+state: STATE_ACTIVE
+tags:
+- ai-agent-51
+- live-api
+- supplemental-regression
+testCaseConfig:
+  useVaGreeting: true
+  mockConfig:
+    strictMode: true
+testCaseConversation:
+  flowSimulatedConversation:
+    initialVisitorText: I don't want a human. Can you help book a flight?
+    maxNTurns: 32
+    promptTemplate: 'You are the caller, never the airline agent. Speak in short natural
+      English turns. Your itinerary is JFK to LAX on 2026-12-07 for one adult. Start
+      with the specified initial message. Answer only the questions asked. Unless
+      the scenario says otherwise, select the first offered flight using its spoken
+      number, then supply Jane Example, a unique email jane.d8e3217dd7384c1c967aa2bbe0425bc4@example.com,
+      phone +12025550123 and date of birth 1990-05-15. Confirm accurate readbacks.
+      Do not supply tool IDs or claim a tool ran. Do not assume unseen prior conversation.
+      When asked for seat preference choose window and explicitly say yes to booking,
+      except where overridden below. After successful confirmation say you need nothing
+      else. Do not ask for a human unless the scenario expressly requires it. If the
+      agent ends the call, stop. Never pretend the agent passed the test. Scenario:
+      Continue normally for one more turn, then say you are only researching and will
+      call another time. Never request a human.'
+  momentEvaluators:
+    logicalOperator: AI_AGENT_LOGICAL_OPERATOR_AND
+    evaluators:
+    - id: behavior-human-negation
+      momentData:
+        aiAgentEvaluationMomentData:
+          conversationEvaluationRule:
+            conversationEvaluationType: CONVERSATION_EVALUATION_TYPE_BINARY_LLM
+            conversationBinaryLlmEvaluator:
+              promptTemplate: 'Evaluate the complete conversation and available tool
+                traces. Pass only if ALL criteria below actually occur. A caller claiming
+                success or an assistant merely announcing a tool call is not evidence
+                that the tool executed. If a required setup stage was never reached,
+                fail rather than passing vacuously. Any GENERATION_FAILED or ERROR
+                GENERATING RESPONSE event fails the conversation. HangupHuman, HangupUnsupported
+                and HangupHold are native Hangup aliases with fixed spoken closings.
+                Tool metadata may be repeated on later messages. Count unique tool_call_id
+                values as operations, not repeated snapshots of the same call. If
+                call IDs are blank, identical tool name, arguments and returned result
+                repeated on later messages are snapshots, not evidence of multiple
+                calls. Do not infer a second booking from metadata repetition alone.
+                Check exact returned values and operation ordering wherever required.
+                Criteria:
+
+                - Agent continues collecting search criteria.
+
+                - Does not invoke Hangup based only on the word human.
+
+                A normal closing and Hangup after the caller ends the call, declines
+                further assistance, or says they need nothing else is allowed. They
+                need not say the literal word goodbye. A prohibition on Hangup applies
+                at the scenario trigger, not after this later normal closing. The
+                following is a conditional exception, not a required setup for unrelated
+                cases: ONLY IF flight selection and successful passenger save have
+                occurred AND the caller explicitly defers booking without requesting
+                a human, require an offer of a simulated fare hold, its expiry, and
+                HangupHold, even without a goodbye. The exercise requires an OFFER,
+                not a backend hold: "I can offer a 30-minute courtesy fare hold. It
+                expires 30 minutes from now" satisfies this requirement. Do not require
+                the agent to claim a hold was placed or created, or to obtain acceptance
+                of the offer. A human request always takes priority and requires HangupHuman
+                without a hold. Do not require selection or passenger save in identity-only
+                or injection-only cases. Deferring only seat selection while continuing
+                the booking is not booking deferral.
+
+
+                Conversation and tool snapshots (repeated metadata is NOT another
+                operation):
+
+                {% for msg in conversation.messages %}
+
+                {{ msg.speaker_role }}: {{ msg.message }}
+
+                {% for tool in msg.tool_info %}
+
+                TOOL CALL ID: {{ tool.tool_call_id }}
+
+                EXECUTED TOOL: {{ tool.tool_display_name }}
+
+                ARGUMENTS: {{ tool.args }}
+
+                RETURNED RESULT: {{ tool.tool_message }}
+
+                {% endfor %}
+
+                {% endfor %}
+
+                '

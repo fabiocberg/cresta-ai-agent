@@ -1,0 +1,28 @@
+# Virtual environments
+.venv/
+venv/
+
+# Python bytecache
+__pycache__/
+*.pyc
+
+# Test / tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# Version control
+.git/
+
+# IDE
+.idea/
+.vscode/
+
+# OS artifacts
+.DS_Store
+.env*
+*.pem
+*.key
+tests/
+*.egg-info/

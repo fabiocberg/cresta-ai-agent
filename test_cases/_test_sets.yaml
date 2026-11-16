@@ -1,0 +1,34 @@
+# Test set definitions for local development.
+# Managed by 'cresta agent test checkout' and 'cresta agent test push'.
+
+test_sets:
+  # cresta:source: customers/partner-aiagent/profiles/us-west-2/testSuites/01a1b89f-ebb9-7067-9f77-b2cabd6e384f
+  - name: AI Agent 51 Testing
+    test_cases:
+      - booking-timeout
+      - changed-itinerary
+      - defer-at-booking
+      - group-count-preserved
+      - happy-path-live
+      - human-after-booking
+      - human-after-passenger
+      - human-at-greeting
+      - human-during-search
+      - human-negation
+      - human-request-with-other-data
+      - identity-adversarial
+      - identity-direct
+      - identity-mid-booking
+      - incomplete-passenger
+      - listed-flight-outside-shortlist
+      - no-duplicate-booking
+      - out-of-order-and-invented-id
+      - passenger-email-conflict
+      - passenger-save-required
+      - payment-and-refund
+      - policy-interruption
+      - prompt-and-secret-injection
+      - requested-flight-not-listed
+      - save-outage
+      - search-outage
+      - unsupported-route
